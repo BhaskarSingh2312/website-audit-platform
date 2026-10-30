@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital Intelligence & Website Audit Platform</title>
+  <meta name="description" content="Advanced website analysis, technical SEO audit, security testing, social media discovery, and advertising intelligence platform.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Top Navbar -->
+    <header class="navbar">
+      <div class="nav-brand">
+        <div class="logo-icon">🌐</div>
+        <div>
+          <h1 class="nav-title">DIGITAL <span class="gradient-text">INTELLIGENCE</span></h1>
+          <p class="nav-subtitle">Comprehensive Website Audit, Security, SEO & Ad Intelligence Platform</p>
+        </div>
+      </div>
+      <div class="nav-actions">
+        <div class="status-badge" id="system-status">
+          <span class="status-dot"></span>
+          <span id="status-text">Gemini AI Ready</span>
+        </div>
+        <button class="btn btn-secondary btn-sm" id="btn-open-history">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+          Audit History (<span id="history-counter">0</span>)
+        </button>
+        <button class="btn btn-secondary btn-sm" id="btn-open-settings">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+          Settings
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <!-- Hero Audit Search Box -->
+      <section class="hero-audit-section">
+        <div class="search-card glassmorphism">
+          <h2 class="search-heading">360° Website Intelligence & <span class="highlight">Digital Audit Engine</span></h2>
+          <p class="search-desc">Enter any website URL to automatically audit Technical SEO, Security Headers, SSL/TLS, Social Profiles, Meta/Google Ads Footprints, Performance, and Technology Stack.</p>
+          
+          <form id="audit-form" class="audit-input-group">
+            <div class="input-wrapper">
+              <span class="input-icon">🌐</span>
+              <input type="text" id="target-url" placeholder="Enter target website URL (e.g. stripe.com, allbirds.com, gymshark.com, sarahana.in)..." required autocomplete="off">
+            </div>
+            <button type="submit" class="btn btn-primary" id="btn-submit-audit">
+              <span id="btn-text">Audit Website</span>
+              <span class="btn-spinner hidden" id="btn-spinner"></span>
+            </button>
+          </form>
+
+          <div class="sample-pills">
+            <span class="pill-label">Quick Audits:</span>
+            <button class="pill-btn" data-url="https://stripe.com">Stripe (SaaS)</button>
+            <button class="pill-btn" data-url="https://allbirds.com">Allbirds (E-commerce)</button>
+            <button class="pill-btn" data-url="https://gymshark.com">Gymshark (Shopify Plus)</button>
+            <button class="pill-btn" data-url="https://sarahana.in">Sarahana (Indian Store)</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Live Pipeline Stepper -->
+      <section class="pipeline-section hidden" id="pipeline-section">
+        <div class="pipeline-card glassmorphism">
+          <div class="pipeline-header">
+            <div class="pulse-indicator">
+              <span class="pulse-ring"></span>
+              <span class="pulse-core"></span>
+            </div>
+            <div>
+              <h3 class="pipeline-title" id="pipeline-current-step">Analyzing Website...</h3>
+              <p class="pipeline-details" id="pipeline-details">Starting multi-stage digital intelligence crawl...</p>
+            </div>
+            <span class="pipeline-percent" id="pipeline-percent">5%</span>
+          </div>
+
+          <div class="progress-bar-container">
+            <div class="progress-bar-fill" id="progress-bar-fill" style="width: 5%;"></div>
+          </div>
+
+          <div class="step-nodes">
+            <div class="step-node active" id="node-connect">
+              <div class="node-circle">1</div>
+              <span>Connect</span>
+            </div>
+            <div class="step-node" id="node-crawl">
+              <div class="node-circle">2</div>
+              <span>Crawl</span>
+            </div>
+            <div class="step-node" id="node-social">
+              <div class="node-circle">3</div>
+              <span>Social</span>
+            </div>
+            <div class="step-node" id="node-ads">
+              <div class="node-circle">4</div>
+              <span>Ad Intel</span>
+            </div>
+            <div class="step-node" id="node-seo">
+              <div class="node-circle">5</div>
+              <span>SEO</span>
+            </div>
+            <div class="step-node" id="node-security">
+              <div class="node-circle">6</div>
+              <span>Security</span>
+            </div>
+            <div class="step-node" id="node-ai">
+              <div class="node-circle">7</div>
+              <span>AI Report</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Audit Results Dashboard & Chatbot Split Grid -->
+      <section class="dashboard-grid hidden" id="dashboard-grid">
+        <!-- Left: Comprehensive Multi-Tab Report -->
+        <div class="report-column">
+          <!-- Overview Banner Card -->
+          <div class="card glassmorphism brand-overview-card">
+            <div class="brand-header">
+              <div>
+                <div class="badge-row">
+                  <span class="badge badge-platform" id="badge-platform">Platform</span>
+                  <span class="badge" id="badge-model">Business Model</span>
+                  <span class="badge badge-pages" id="badge-pages-crawled">Pages Crawled</span>
+                </div>
+                <h2 class="brand-title" id="report-brand-name">Brand Name</h2>
+                <a href="#" target="_blank" class="brand-link" id="report-url">https://example.com ↗</a>
+              </div>
+              <div class="score-circle-wrapper">
+                <div class="score-circle" id="score-circle">
+                  <span class="score-number" id="report-health-score">78</span>
+                  <span class="score-label">OVERALL HEALTH</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Five Core Pillar Scores Grid -->
+            <div class="pillar-scores-grid">
+              <div class="pillar-card">
+                <span class="pillar-icon">🎯</span>
+                <div class="pillar-info">
+                  <span class="pillar-title">Overall Health</span>
+                  <span class="pillar-score" id="score-val-health">78/100</span>
+                </div>
+              </div>
+              <div class="pillar-card">
+                <span class="pillar-icon">🔍</span>
+                <div class="pillar-info">
+                  <span class="pillar-title">Technical SEO</span>
+                  <span class="pillar-score" id="score-val-seo">80/100</span>
+                </div>
+              </div>
+              <div class="pillar-card">
+                <span class="pillar-icon">🛡️</span>
+                <div class="pillar-info">
+                  <span class="pillar-title">Security & SSL</span>
+                  <span class="pillar-score" id="score-val-security">85/100 (<span id="security-grade-badge">A</span>)</span>
+                </div>
+              </div>
+              <div class="pillar-card">
+                <span class="pillar-icon">⚡</span>
+                <div class="pillar-info">
+                  <span class="pillar-title">Speed & Mobile</span>
+                  <span class="pillar-score" id="score-val-perf">75/100</span>
+                </div>
+              </div>
+              <div class="pillar-card">
+                <span class="pillar-icon">📈</span>
+                <div class="pillar-info">
+                  <span class="pillar-title">Conversion CRO</span>
+                  <span class="pillar-score" id="score-val-cro">70/100</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Rescan Comparison Alert (Hidden by default) -->
+            <div class="comparison-banner hidden" id="comparison-banner">
+              <div class="comp-icon">🔄</div>
+              <div class="comp-details">
+                <h4 id="comp-title">Rescan Comparison Available</h4>
+                <p id="comp-text">Comparing current audit against previous scan.</p>
+              </div>
+              <span class="comp-delta" id="comp-delta">+0 pts</span>
+            </div>
+
+            <!-- Quick Metadata Metrics Row -->
+            <div class="meta-stats-row">
+              <div class="meta-stat">
+                <span class="stat-label">Country</span>
+                <span class="stat-val" id="report-country">Global</span>
+              </div>
+              <div class="meta-stat">
+                <span class="stat-label">Social Profiles</span>
+                <span class="stat-val" id="stat-social-count">0 Discovered</span>
+              </div>
+              <div class="meta-stat">
+                <span class="stat-label">Active Ad Pixels</span>
+                <span class="stat-val" id="stat-pixels-count">0 Active</span>
+              </div>
+              <div class="meta-stat">
+                <span class="stat-label">Verified Emails</span>
+                <span class="stat-val" id="stat-emails-count">0 Found</span>
+              </div>
+              <div class="meta-stat">
+                <span class="stat-label">Total Issues</span>
+                <span class="stat-val" id="stat-issues-count">0 Issues</span>
+              </div>
+            </div>
+
+            <!-- Tab Navigation Strip (10 Dimensions) -->
+            <div class="report-tabs">
+              <button class="tab-btn active" data-tab="tab-overview">📊 Executive Plan</button>
+              <button class="tab-btn" data-tab="tab-social">🌐 Social & Contacts (<span id="tab-social-badge">0</span>)</button>
+              <button class="tab-btn" data-tab="tab-ads">🎯 Ad Intelligence (<span id="tab-ads-badge">0</span>)</button>
+              <button class="tab-btn" data-tab="tab-seo">🔍 Technical SEO</button>
+              <button class="tab-btn" data-tab="tab-security">🛡️ Security & SSL</button>
+              <button class="tab-btn" data-tab="tab-performance">⚡ Speed & Device Preview</button>
+              <button class="tab-btn" data-tab="tab-content">📄 Content & Trust</button>
+              <button class="tab-btn" data-tab="tab-tech">🛠️ Tech Stack</button>
+              <button class="tab-btn" data-tab="tab-history">📜 History & Archives</button>
+              <button class="tab-btn" data-tab="tab-flaws">⚠️ All Flaws (<span id="tab-flaws-badge">0</span>)</button>
+            </div>
+          </div>
+
+          <!-- TAB 1: EXECUTIVE & STRATEGIC PITCH -->
+          <div class="tab-pane active" id="tab-overview">
+            <div class="card glassmorphism">
+              <div class="card-title-row">
+                <h3>🎯 Executive Digital Audit Summary</h3>
+                <span class="provenance-pill verified">🟢 Synthesized from Verified Signals</span>
+              </div>
+              <p class="summary-paragraph" id="report-executive-summary">Detailed overview synthesized by AI...</p>
+            </div>
+
+            <div class="card glassmorphism pitch-box-card">
+              <div class="card-title-row">
+                <h3>✉️ Ready-to-Send Executive Client Pitch</h3>
+                <button class="btn btn-secondary btn-sm" id="btn-copy-pitch">📋 Copy Email</button>
+              </div>
+              <div class="pitch-subject-row">
+                <span class="subject-label">Subject:</span>
+                <input type="text" id="pitch-subject" readonly>
+              </div>
+              <textarea id="pitch-body" rows="9" readonly></textarea>
+            </div>
+          </div>
+
+          <!-- TAB 2: SOCIAL MEDIA DISCOVERY & CONTACTS -->
+          <div class="tab-pane" id="tab-social">
+            <div class="card glassmorphism">
+              <div class="card-title-row">
+                <h3>🌐 Discovered Social Media Profiles</h3>
+                <span class="provenance-pill verified">🟢 Verified from Header, Footer, Meta & Schemas</span>
+              </div>
+              <p class="tab-hint" id="social-summary-text">Analyzing discovered social profiles...</p>
+
+              <div class="social-cards-grid" id="social-profiles-container"></div>
+
+              <div class="missing-platforms-box hidden" id="missing-platforms-box">
+                <h4>⚠️ Missing Essential Social Channels</h4>
+                <p id="missing-platforms-list">None</p>
+              </div>
+            </div>
+
+            <!-- Discovered Contacts Box -->
+            <div class="card glassmorphism">
+              <div class="card-title-row">
+                <h3>📬 Verified Business Contacts & Corporate Entity</h3>
+              </div>
+              <div class="contact-sections-stack">
+                <div class="contact-section-box">
+                  <span class="section-badge-icon">📧</span>
+                  <div class="section-content">
+                    <h4>Direct Support & Business Emails</h4>
+                    <div id="all-contact-emails" class="contact-chips-row"></div>
+                  </div>
+                </div>
+
+                <div class="contact-section-box">
+                  <span class="section-badge-icon">📞</span>
+                  <div class="section-content">
+                    <h4>Phone & Customer Support Numbers</h4>
+                    <div id="all-contact-phones" class="contact-chips-row"></div>
+                  </div>
+                </div>
+
+                <div class="contact-section-box">
+                  <span class="section-badge-icon">💬</span>
+                  <div class="section-content">
+                    <h4>WhatsApp Support</h4>
+                    <div id="all-contact-whatsapp" class="contact-chips-row"></div>
+                  </div>
+                </div>
+
+                <div class="contact-section-box">
+                  <span class="section-badge-icon">📍</span>
+                  <div class="section-content">
+                    <h4>Physical Office / Headquarters Address</h4>
+                    <div id="all-contact-addresses" class="address-list"></div>
+                  </div>
+                </div>
+
+                <div class="contact-section-box">
+                  <span class="section-badge-icon">🏛️</span>
+                  <div class="section-content">
+                    <h4>Business Entity & Tax ID</h4>
+                    <div class="legal-entity-grid">
+                      <div class="legal-field">
+                        <span class="legal-label">Registered Name:</span>
+                        <span class="legal-val" id="val-legal-name">N/A</span>
+                      </div>
+                      <div class="legal-field">
+                        <span class="legal-label">Tax ID / GSTIN / CIN:</span>
+                        <span class="legal-val" id="val-gstin">N/A</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 3: ADVERTISING INTELLIGENCE -->
+          <div class="tab-pane" id="tab-ads">
+            <div class="card glassmorphism">
+              <div class="card-title-row">
+                <div class="title-with-badges">
+                  <h3>🎯 Multi-Platform Advertising & Campaign Intelligence</h3>
+                  <div class="badges-group">
+                    <span class="badge badge-ad-profile" id="badge-ad-spend">Active Advertiser</span>
+                    <span class="badge badge-past-ad" id="badge-past-advertiser">Past Ads: Unknown</span>
+                  </div>
+                </div>
+              </div>
+              <p class="tab-hint" id="ad-opportunity-text">Auditing active advertising footprints, past campaign signals, and live transparency archives.</p>
+
+              <!-- Provenance Disclaimer Alert -->
+              <div class="data-provenance-banner">
+                <span class="prov-tag verified">🟢 Pixels & Library Links: Verified Public</span>
+                <span class="prov-tag estimated">🟡 Spend Profile: Estimated Heuristic</span>
+                <span class="prov-tag private">🔵 Exact Ad Spend & ROAS: Requires Private Account Access</span>
+              </div>
+
+              <!-- Past / Historical Advertising Audit Card -->
+              <div class="ad-historical-card" id="ad-historical-box">
+                <div class="historical-header">
+                  <div class="hist-title-group">
+                    <span class="hist-icon">📜</span>
+                    <div>
+                      <h4 id="hist-status-title">Historical & Past Advertising Verification</h4>
+                      <p class="hist-desc" id="hist-status-desc">Analyzing DOM conversion pixels and campaign tracking artifacts.</p>
+                    </div>
+                  </div>
+                  <span class="hist-status-badge" id="hist-status-badge">Verifying...</span>
+                </div>
+                <div class="historical-evidence-list" id="historical-evidence-container"></div>
+              </div>
+
+              <!-- Installed Pixels Table -->
+              <h4 class="subhead" style="margin-top: 1.25rem;">Installed Conversion & Remarketing Tags</h4>
+              <div class="table-wrapper">
+                <table class="crawled-table">
+                  <thead>
+                    <tr>
+                      <th>Platform</th>
+                      <th>Pixel / Account ID</th>
+                      <th>Detection Source</th>
+                    </tr>
+                  </thead>
+                  <tbody id="installed-pixels-tbody"></tbody>
+                </table>
+              </div>
+
+              <!-- Platform Insights Grid with Separate Active & Past Ad Deep Links -->
+              <h4 class="subhead" style="margin-top: 1.5rem;">Public Ad Library Directories (Active vs. Past Campaigns)</h4>
+              <div class="ad-platforms-grid" id="ad-platforms-container"></div>
+            </div>
+          </div>
+
+          <!-- TAB 4: TECHNICAL SEO & SCHEMA -->
+          <div class="tab-pane" id="tab-seo">
+            <div class="card glassmorphism">
+              <div class="card-title-row">
+                <h3>🔍 Technical & On-Page SEO Audit</h3>
+                <span class="pill-label" id="seo-score-badge">Score: 80/100</span>
+              </div>
+              
+              <div class="seo-audit-cards-grid">
+                <div class="seo-card">
+                  <span class="seo-card-label">Page Title Tag</span>
+                  <p class="seo-card-val" id="seo-title-val">Loading...</p>
+                  <span class="seo-status-pill" id="seo-title-status">Optimal</span>
+                </div>
+                <div class="seo-card">
+                  <span class="seo-card-label">Meta Description</span>
+                  <p class="seo-card-val" id="seo-desc-val">Loading...</p>
+                  <span class="seo-status-pill" id="seo-desc-status">Optimal</span>
+                </div>
+                <div class="seo-card">
+                  <span class="seo-card-label">Canonical Tag</span>
+                  <p class="seo-card-val" id="seo-canonical-val">Loading...</p>
+                  <span class="seo-status-pill" id="seo-canonical-status">Valid</span>
+                </div>
+                <div class="seo-card">
+                  <span class="seo-card-label">Robots.txt & Sitemap</span>
+                  <p class="seo-card-val" id="seo-crawl-val">robots.txt: OK | sitemap.xml: OK</p>
+                  <span class="seo-status-pill success">Accessible</span>
+                </div>
+              </div>
+
+              <h4 class="subhead" style="margin-top: 1.5rem;">Heading Tag Hierarchy (H1, H2, H3)</h4>
+              <div class="headings-container" id="seo-headings-container"></div>
+
+              <h4 class="subhead" style="margin-top: 1.5rem;">Structured Data & JSON-LD Schemas</h4>
+              <div class="schema-tags-row" id="seo-schemas-container"></div>
+
+              <h4 class="subhead" style="margin-top: 1.5rem;">Broken Links Directory (<span id="broken-links-counter">0</span>)</h4>
+              <div class="table-wrapper">
+                <table class="crawled-table">
+                  <thead>
+                    <tr>
+                      <th>Broken Link URL</th>
+                      <th>Status Code</th>
+                      <th>Source Page</th>
+                      <th>Type</th>
+                    </tr>
+                  </thead>
+                  <tbody id="broken-links-tbody"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 5: WEBSITE SECURITY & SSL -->
+          <div class="tab-pane" id="tab-security">
+            <div class="card glassmorphism">
+              <div class="card-title-row">
+                <h3>🛡️ Safe Passive Security Audit</h3>
+                <span class="security-grade-badge" id="sec-audit-grade">Grade A</span>
+              </div>
+              <p class="tab-hint">Non-destructive passive audit inspecting SSL/TLS certificates, security headers, and cookie attributes.</p>
+
+              <!-- SSL Certificate Card -->
+              <div class="ssl-cert-box" id="ssl-cert-box">
+                <div class="ssl-cert-header">
+                  <span class="ssl-badge valid" id="ssl-status-badge">🔒 SSL Certificate Active</span>
+                  <span id="ssl-proto">TLSv1.3</span>
+                </div>
+                <div class="ssl-cert-grid">
+                  <div><strong>Issuer:</strong> <span id="ssl-issuer">Let's Encrypt</span></div>
+                  <div><strong>Valid For:</strong> <span id="ssl-subject">domain.com</span></div>
+                  <div><strong>Days Remaining:</strong> <span id="ssl-days">85 days</span></div>
+                  <div><strong>HTTPS Enforced:</strong> <span id="ssl-enforced">Yes (301 Redirect)</span></div>
+                </div>
+              </div>
+
+              <!-- Security Headers Grid -->
+              <h4 class="subhead" style="margin-top: 1.5rem;">Browser Security Headers</h4>
+              <div class="headers-table-wrapper">
+                <table class="crawled-table">
+                  <thead>
+                    <tr>
+                      <th>Security Header</th>
+                      <th>Status</th>
+                      <th>Current Value / Recommendation</th>
+                    </tr>
+                  </thead>
+                  <tbody id="security-headers-tbody"></tbody>
+                </table>
+              </div>
+
+              <!-- Safe Exposed Files & Probes -->
+              <h4 class="subhead" style="margin-top: 1.5rem;">Passive Exposed Files Check</h4>
+              <div class="probes-grid" id="security-probes-container"></div>
+            </div>
+          </div>
+
+          <!-- TAB 6: PERFORMANCE & DEVICE PREVIEW -->
+          <div class="tab-pane" id="tab-performance">
+            <div class="card glassmorphism">
+              <div class="card-title-row">
+                <h3>⚡ Speed & Core Web Vitals Estimates</h3>
+                <span class="pill-label" id="perf-score-badge">Performance: 75/100</span>
+              </div>
+
+              <div class="cwv-metrics-grid">
+                <div class="cwv-card">
+                  <span class="cwv-label">First Contentful Paint (FCP)</span>
+                  <span class="cwv-val" id="cwv-fcp">1.2s</span>
+                  <span class="cwv-status good">Good (&lt;1.8s)</span>
+                </div>
+                <div class="cwv-card">
+                  <span class="cwv-label">Largest Contentful Paint (LCP)</span>
+                  <span class="cwv-val" id="cwv-lcp">2.4s</span>
+                  <span class="cwv-status good">Good (&lt;2.5s)</span>
+                </div>
+                <div class="cwv-card">
+                  <span class="cwv-label">Total Load Time</span>
+                  <span class="cwv-val" id="cwv-load">1.8s</span>
+                  <span class="cwv-status good">Fast Response</span>
+                </div>
+                <div class="cwv-card">
+                  <span class="cwv-label">Time to First Byte (TTFB)</span>
+                  <span class="cwv-val" id="cwv-ttfb">0.24s</span>
+                  <span class="cwv-status good">Fast Server</span>
+                </div>
+              </div>
+
+              <!-- Asset Weight Breakdown -->
+              <h4 class="subhead" style="margin-top: 1.5rem;">Estimated Page Payload Breakdown</h4>
+              <div class="assets-bar-wrapper">
+                <div class="assets-stat-row" id="assets-breakdown-row"></div>
+              </div>
+
+              <!-- Interactive Device Switcher Simulator -->
+              <h4 class="subhead" style="margin-top: 1.5rem;">Responsive Screen Simulator</h4>
+              <div class="device-switcher-row">
+                <button class="device-btn active" data-device="desktop">🖥️ Desktop (1440px)</button>
+                <button class="device-btn" data-device="tablet">📱 Tablet (768px)</button>
+                <button class="device-btn" data-device="mobile">📱 Mobile (375px)</button>
+              </div>
+              <div class="device-frame-container desktop" id="device-frame-container">
+                <iframe id="device-preview-iframe" src="about:blank" sandbox="allow-same-origin allow-scripts"></iframe>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 7: CONTENT QUALITY & TRUST SIGNALS -->
+          <div class="tab-pane" id="tab-content">
+            <div class="card glassmorphism">
+              <div class="card-title-row">
+                <h3>📄 Content Completeness & Trust Signals</h3>
+                <span class="pill-label" id="content-trust-score-badge">Trust Score: 85/100</span>
+              </div>
+
+              <div class="trust-checklist-grid">
+                <div class="trust-item" id="trust-privacy">
+                  <span class="trust-icon">🔒</span>
+                  <span>Privacy Policy</span>
+                  <span class="trust-status" id="status-privacy">Checked</span>
+                </div>
+                <div class="trust-item" id="trust-terms">
+                  <span class="trust-icon">📜</span>
+                  <span>Terms of Service</span>
+                  <span class="trust-status" id="status-terms">Checked</span>
+                </div>
+                <div class="trust-item" id="trust-refund">
+                  <span class="trust-icon">🔄</span>
+                  <span>Refund / Return Policy</span>
+                  <span class="trust-status" id="status-refund">Checked</span>
+                </div>
+                <div class="trust-item" id="trust-contact">
+                  <span class="trust-icon">📬</span>
+                  <span>Accessible Contact Page</span>
+                  <span class="trust-status" id="status-contact">Checked</span>
+                </div>
+                <div class="trust-item" id="trust-proof">
+                  <span class="trust-icon">⭐</span>
+                  <span>Customer Reviews & Proof</span>
+                  <span class="trust-status" id="status-proof">Checked</span>
+                </div>
+              </div>
+
+              <h4 class="subhead" style="margin-top: 1.5rem;">Content Volume & Readability</h4>
+              <div class="content-stats-grid">
+                <div class="content-stat-box">
+                  <span class="stat-number" id="content-word-count">0</span>
+                  <span class="stat-desc">Total Word Count</span>
+                </div>
+                <div class="content-stat-box">
+                  <span class="stat-number" id="content-read-time">0 min</span>
+                  <span class="stat-desc">Estimated Reading Time</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 8: TECH STACK & INTEGRATIONS -->
+          <div class="tab-pane" id="tab-tech">
+            <div class="card glassmorphism">
+              <div class="card-title-row">
+                <h3>🛠️ Technology Stack & Third-Party Integrations</h3>
+              </div>
+              <p class="tab-hint">Detected CMS, frontend libraries, CDN, analytics, and marketing integrations with confidence levels.</p>
+
+              <div class="tech-table-wrapper">
+                <table class="crawled-table">
+                  <thead>
+                    <tr>
+                      <th>Technology</th>
+                      <th>Category</th>
+                      <th>Confidence</th>
+                      <th>Version / Detection</th>
+                    </tr>
+                  </thead>
+                  <tbody id="tech-stack-tbody"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 9: HISTORY & WEB ARCHIVES -->
+          <div class="tab-pane" id="tab-history">
+            <div class="card glassmorphism">
+              <div class="card-title-row">
+                <h3>📜 Historical Records & Internet Archive Timeline</h3>
+              </div>
+              <p class="tab-hint" id="history-disclaimer-text">Public archive records from the Internet Archive Wayback Machine.</p>
+
+              <div class="history-metrics-row">
+                <div class="hist-card">
+                  <span class="hist-label">First Seen in Web Archives</span>
+                  <span class="hist-val" id="hist-first-seen">Loading...</span>
+                </div>
+                <div class="hist-card">
+                  <span class="hist-label">Estimated Domain Age</span>
+                  <span class="hist-val" id="hist-domain-age">Loading...</span>
+                </div>
+                <div class="hist-card">
+                  <span class="hist-label">Total Preserved Snapshots</span>
+                  <span class="hist-val" id="hist-total-snapshots">Loading...</span>
+                </div>
+              </div>
+
+              <h4 class="subhead" style="margin-top: 1.5rem;">Historical Milestone Timeline</h4>
+              <div class="timeline-container" id="history-timeline-container"></div>
+              
+              <div style="margin-top: 1.5rem;">
+                <a href="#" target="_blank" class="btn btn-secondary btn-sm" id="btn-view-wayback-calendar">
+                  Open Internet Archive Calendar ↗
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 10: ALL FLAWS & ACTION PLAN -->
+          <div class="tab-pane" id="tab-flaws">
+            <div class="card glassmorphism">
+              <div class="card-title-row">
+                <h3>⚠️ Actionable Issues & Recommended Fixes</h3>
+                <span class="flaw-count-tag" id="flaw-total-tag">0 Issues Found</span>
+              </div>
+
+              <!-- Severity & Category Filter Bar -->
+              <div class="flaws-filter-bar">
+                <div class="filter-group">
+                  <span class="filter-label">Severity:</span>
+                  <button class="filter-btn active" data-severity="ALL">All</button>
+                  <button class="filter-btn" data-severity="CRITICAL">Critical</button>
+                  <button class="filter-btn" data-severity="WARNING">Warning</button>
+                  <button class="filter-btn" data-severity="OPPORTUNITY">Opportunity</button>
+                </div>
+                <div class="filter-group" style="margin-top: 0.5rem;">
+                  <span class="filter-label">Category:</span>
+                  <button class="cat-btn active" data-category="ALL">All Categories</button>
+                  <button class="cat-btn" data-category="SEO">SEO</button>
+                  <button class="cat-btn" data-category="Security">Security</button>
+                  <button class="cat-btn" data-category="Performance">Performance</button>
+                  <button class="cat-btn" data-category="Content">Content</button>
+                  <button class="cat-btn" data-category="Social">Social</button>
+                  <button class="cat-btn" data-category="CRO">CRO</button>
+                </div>
+              </div>
+
+              <div class="flaws-list" id="flaws-container"></div>
+            </div>
+          </div>
+
+          <!-- Action Buttons Row -->
+          <div class="report-actions-row">
+            <button class="btn btn-primary" id="btn-print-pdf">
+              📥 Export Branded PDF Report
+            </button>
+            <button class="btn btn-success" id="btn-export-excel">
+              📊 Download Excel Report (.xlsx)
+            </button>
+            <button class="btn btn-secondary" id="btn-download-json">
+              💾 Download Raw JSON
+            </button>
+          </div>
+        </div>
+
+        <!-- Right: AI Copilot Assistant -->
+        <div class="chatbot-column">
+          <div class="card glassmorphism chat-card">
+            <div class="chat-header">
+              <div class="chat-header-info">
+                <div class="agent-avatar">🤖</div>
+                <div>
+                  <h4>Audit AI Copilot</h4>
+                  <p class="chat-status">Context: <span id="chat-brand-context">Selected Site</span></p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Quick Action Prompt Chips -->
+            <div class="quick-chips-wrapper">
+              <button class="chip" data-prompt="Summarize the top 3 critical security risks and how to fix them.">🛡️ Security Fixes</button>
+              <button class="chip" data-prompt="Draft a cold outreach email pitching technical SEO and speed improvements.">✉️ SEO Pitch</button>
+              <button class="chip" data-prompt="List all verified emails, phones, and physical addresses discovered on this site.">📬 All Contacts</button>
+              <button class="chip" data-prompt="What advertising pixels and tracking tags are installed on this domain?">🎯 Ad Pixels</button>
+            </div>
+
+            <!-- Messages Stream -->
+            <div class="chat-messages" id="chat-messages">
+              <div class="chat-msg msg-ai">
+                <div class="msg-bubble">
+                  Hello! I've loaded the full digital intelligence audit context. Ask me anything about SEO, security vulnerabilities, ad campaigns, contacts, or project proposals!
+                </div>
+              </div>
+            </div>
+
+            <!-- Chat Input -->
+            <form id="chat-form" class="chat-input-form">
+              <input type="text" id="chat-input" placeholder="Ask AI about this site (e.g. explain SSL issue)..." autocomplete="off" required>
+              <button type="submit" class="btn btn-primary btn-icon" id="btn-send-chat">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Past Audits / History Drawer Modal -->
+    <div class="modal-backdrop hidden" id="history-modal">
+      <div class="modal-card glassmorphism history-modal-card">
+        <div class="modal-header">
+          <h3>📜 Audit Database History</h3>
+          <button class="btn-close" id="btn-close-history">&times;</button>
+        </div>
+        <div class="modal-body">
+          <p class="tab-hint">Previously audited websites saved in SQLite. Click any row to reload its full report instantly or compare changes over time.</p>
+          <div class="history-list" id="history-items-container">
+            <p class="pill-label">Loading history...</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div class="modal-backdrop hidden" id="settings-modal">
+      <div class="modal-card glassmorphism">
+        <div class="modal-header">
+          <h3>⚙️ Application Settings</h3>
+          <button class="btn-close" id="btn-close-settings">&times;</button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="input-gemini-key">Google Gemini API Key:</label>
+            <input type="password" id="input-gemini-key" placeholder="AIzaSy... (Configured in .env or override here)">
+            <small>Powers AI contact extraction, executive intelligence synthesis, and chat copilot.</small>
+          </div>
+          <div class="form-group">
+            <label for="input-meta-token">Meta Graph API Token (Optional):</label>
+            <input type="password" id="input-meta-token" placeholder="EAAB... (Optional for official Meta Ad Library API)">
+            <small>If left blank, the platform automatically discovers ad footprints and public transparency directories.</small>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" id="btn-cancel-settings">Cancel</button>
+          <button class="btn btn-primary" id="btn-save-settings">Save Settings</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

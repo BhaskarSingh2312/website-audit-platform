@@ -1,0 +1,35 @@
+# Environment variables & secrets (CRITICAL: Never commit API keys!)
+.env
+*.env
+.env.local
+
+# SQLite Database & data records
+data/*.db
+data/*.sqlite
+*.sqlite3
+*.db
+
+# Python bytecode and caches
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+ENV/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDEs & Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Local scratch / test files
+scratch/

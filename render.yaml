@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: digital-audit-platform
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn backend.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: DEBUG
+        value: "False"
+      - key: HOST
+        value: "0.0.0.0"
